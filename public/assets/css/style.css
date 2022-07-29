@@ -61,7 +61,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        row-gap: 20px;
+        row-gap: 5px;
     }
 
     .movie-scroll img {

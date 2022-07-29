@@ -1,28 +1,41 @@
 import React from "react";
-import Footer from "./Footer";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from 'react';
 
 export default function SucessScreen() {
+    const final = {
+        ids: [1, 2, 3],
+        name: "Fulano",
+        cpf: "12345678900"
+    };
+    useEffect(() => {
+        
+        const bookRequisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", final);
+        
+    }, []);
+    console.log({final});
     return (
         <>
             <div className="padding-header"></div>
-            <div class="name-cpf">
+            <div className="name-cpf">
                 <p>Nome do comprador:</p>
                 <input type="text" placeholder="Digite seu nome..." />
                 <p>CPF do comprador:</p>
                 <input type="text" placeholder="Digite seu CPF..." />
             </div>
 
-            <div class="button">
+            <div className="button">
                 <p>Reservar assento(s)</p>
             </div>
-            <div class="padding"></div>
+            <div className="padding"></div>
 
-            <p class="final-title">Pedido feito com sucesso!</p>
-            <div class="padding"></div>
+            <p className="final-title">Pedido feito com sucesso!</p>
+            <div className="padding"></div>
 
-            <div class="ticket">
+            <div className="ticket">
                 <div>
-                    <h1>Filme e sessão</h1>
+                    <h1>blabla</h1>
                     <p>Enola Holmes</p>
                     <p>24/06/2021 15:00</p>
                 </div>
@@ -37,10 +50,8 @@ export default function SucessScreen() {
                     <p>24/06/2021 15:00</p>
                 </div>
             </div>
-            <div class="button">Voltar pra Home</div>
-            <div class="padding"></div>
-            <div class="padding-footer"></div>
-            <Footer />
+            <div className="button">Voltar pra Home</div>
+            <div className="padding"></div>
         </>
     )
 }
