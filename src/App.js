@@ -5,7 +5,6 @@ import SessionScreen from "./SessionScreen";
 import SeatScreen from "./SeatScreen";
 import SucessScreen from "./SucessScreen";
 import Header from "./Header";
-import Footer from "./Footer";
 
 
 export default function App() {
@@ -15,10 +14,9 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<StartScreen />} />
                 <Route path="/sessoes/:id" element={<SessionScreen />} />
-                <Route path="/assento/:id" element={<SeatScreen />} />
+                <Route path="/assentos/:id" element={<SeatScreen />} />
                 <Route path="/sucesso" element={<SucessScreen />} />
             </Routes>
-        <Footer />
         </BrowserRouter>
     );
 }

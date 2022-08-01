@@ -1,47 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useState, useEffect } from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 
 export default function SucessScreen() {
-    const final = {
-        ids: [1, 2, 3],
-        name: "Fulano",
-        cpf: "12345678900"
-    };
-    useEffect(() => {
-        
-        const bookRequisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", final);
-        
-    }, []);
-    console.log({final});
+    const { state } = useLocation();
+    const { final } = state;
+    console.log(final);
+    const navigate = useNavigate();
+
     return (
-        <>
-            <div className="padding-header"></div>
-            
-
-            <p className="final-title">Pedido feito com sucesso!</p>
-            <div className="padding"></div>
-
-            <div className="ticket">
-                <div>
-                    <h1>blabla</h1>
-                    <p>Enola Holmes</p>
-                    <p>24/06/2021 15:00</p>
-                </div>
-                <div>
-                    <h1>Filme e sessão</h1>
-                    <p>Enola Holmes</p>
-                    <p>24/06/2021 15:00</p>
-                </div>
-                <div>
-                    <h1>Filme e sessão</h1>
-                    <p>Enola Holmes</p>
-                    <p>24/06/2021 15:00</p>
-                </div>
+        <><div className="padding-header"></div><p className="final-title">Pedido feito com sucesso!</p><div className="padding"></div><div className="ticket">
+            <div>
+                <h1>Filme e sessão</h1>
+                <p>{final.MovieTitle}</p>
+                <p>{final.date} - {final.time}</p>
             </div>
-            <div className="button">Voltar pra Home</div>
-            <div className="padding"></div>
-        </>
+            <div>
+                <h1>Ingressos</h1>
+                {final.ids.map(ids =>[
+                    <p>Assento {ids}</p>
+                ])}
+            </div>
+            <div>
+                <h1>Comprador</h1>
+                <p>{final.name}</p>
+                <p>CPF: {final.cpf}</p>
+            </div>
+        </div><div className="button">Voltar pra Home</div><div className="padding"></div></>
     )
 }

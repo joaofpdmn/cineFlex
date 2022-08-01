@@ -1,15 +1,15 @@
 import React from "react";
 
-export default function Footer() {
+export default function Footer({movieName, weekDay, time, img}) {
     return (
         <>
             <div className="padding"></div>
             <div className="padding-footer"></div>
             <div className="footer">
-                <img src="./assets/img/movieimage.png" alt="ticketimg" />
+                <img src={img} alt="ticketimg" />
                 <div>
-                    <p>Enola Holmes</p>
-                    <p>Quarta-Feira - 15:00</p>
+                    <p>{movieName}</p>
+                    <p>{weekDay} - {time}</p>
                 </div>
             </div>
         </>

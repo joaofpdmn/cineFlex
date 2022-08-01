@@ -9,6 +9,10 @@
         flex-direction: column;
     }
 
+    a{
+        text-decoration: none;
+    }
+
     .root {
         font-family: 'Roboto';
         
@@ -119,14 +123,16 @@
         display: flex;
         padding-left: 24px;
         flex-direction: column;
+        columns: 10;
+        orphans: 10;
     }
 
     .seat-map{
         display: flex;
-        overflow-x:auto;
+        flex-wrap: wrap;
     }
 
-    .seat-map p{
+    .seat-map div{
         background-color: #C3CFD9;
         border: 1px solid #808F9D;
         border-radius: 50%;
@@ -140,6 +146,8 @@
         height: 26px;
         margin-inline-end: 7px;
         margin-block-end: 7px;
+        columns: 10;
+        orphans: 10;
     }
 
     .caption{

@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Footer from "./Footer";
 
-export default function SessionScreen() {
+
+export default function SessionScreen () {
     const params = useParams();
     const [sessions, setSessions] = useState([]);
     console.log(params);
@@ -28,8 +30,8 @@ export default function SessionScreen() {
                 <><div className="sessions" >
                     {daysArray.map((daysArray, index) =>
                         <><><h1>{daysArray.weekday} - {daysArray.date}</h1><div className="times">
-                            {daysArray.showtimes.map(showtimes =>
-                                <Link to={`assento/${showtimes.id}`} >
+                            {daysArray.showtimes.map((showtimes, index) =>
+                                <Link to={`/assentos/${showtimes.id}`}>
                                     <p>{showtimes.name}</p>
                                 </Link>
                             )}
@@ -41,6 +43,7 @@ export default function SessionScreen() {
                 </>
 
             </div>
+            <Footer movieName={sessions.title} img={sessions.posterURL}/>
         </>
     )
 }
