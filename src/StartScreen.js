@@ -15,14 +15,17 @@ export default function StartScreen() {
     }, []);
     console.log(movies);
 
+    
     return (
         <>
             <p className="title">Selecione o filme</p>
             <div className="movie-scroll">
-                {movies.map(movies =>
-                    <Link to="/sessoes">
-                        <img src={movies.posterURL} alt="movieimage" />
-                    </Link>)}
+                <div key={movies.id}>
+                    {movies.map(movies =>
+                        <Link to={`sessoes/${movies.id}`}>
+                            <img src={movies.posterURL} alt="movieimage" />
+                        </Link>)}
+                </div>
             </div>
         </>
     );

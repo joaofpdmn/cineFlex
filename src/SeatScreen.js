@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from 'react';
 
 export default function SeatScreen() {
+    const params = useParams();
     const [seats, setSeats] = useState([]);
     useEffect(() => {
-        const seatRequisition = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/showtimes/12/seats");
+        const seatRequisition = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.id}/seats`);
         seatRequisition.then(response => {
             setSeats(response.data);
         })
@@ -15,7 +16,6 @@ export default function SeatScreen() {
 
     return (
         <>
-            <div className="padding-header"></div>
             <p className="title">Selecione o assento</p>
             <div className="padding"></div>
             <div className="seat-selector">
@@ -50,6 +50,18 @@ export default function SeatScreen() {
                     <h6>Indisponível</h6>
                 </div>
             </div>
+            <div className="padding"></div>
+            <div className="name-cpf">
+                <p>Nome do comprador:</p>
+                <input type="text" placeholder="Digite seu nome..." />
+                <p>CPF do comprador:</p>
+                <input type="text" placeholder="Digite seu CPF..." />
+            </div>
+
+            <div className="button">
+                <p>Reservar assento(s)</p>
+            </div>
+            <div className="padding"></div>
         </>
     );
 }

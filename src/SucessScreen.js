@@ -18,17 +18,7 @@ export default function SucessScreen() {
     return (
         <>
             <div className="padding-header"></div>
-            <div className="name-cpf">
-                <p>Nome do comprador:</p>
-                <input type="text" placeholder="Digite seu nome..." />
-                <p>CPF do comprador:</p>
-                <input type="text" placeholder="Digite seu CPF..." />
-            </div>
-
-            <div className="button">
-                <p>Reservar assento(s)</p>
-            </div>
-            <div className="padding"></div>
+            
 
             <p className="final-title">Pedido feito com sucesso!</p>
             <div className="padding"></div>

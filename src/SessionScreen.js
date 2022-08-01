@@ -2,40 +2,44 @@ import React from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from 'react';
-
+import { useParams } from 'react-router-dom';
 
 export default function SessionScreen() {
+    const params = useParams();
     const [sessions, setSessions] = useState([]);
+    console.log(params);
     useEffect(() => {
-        const sessionsRequisition = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/movies/7/showtimes");
-        sessionsRequisition.then(response => {
-            setSessions(response.data);
-        })
+        const sessionsRequisition = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${params.id}/showtimes`);
+        console.log(params.id);
+        sessionsRequisition.then((film) => {
+            setSessions(film.data);
+        });
     }, []);
-
-    console.log(sessions);
+    if (sessions.length === 0) {
+        return <img src="" />
+    }
+    const daysArray = [...sessions.days];
+    console.log(daysArray);
     return (
         <>
-            <div className="padding-header"></div>
             <p className="title">Selecione o horário</p>
             <div className="padding"></div>
             <div className="time-selector">
-                <div className="sessions">
-                    <h1>Quinta-feira - 24/06/2021</h1>
-                    <div className="times">
-                        <p>15:00</p>
-                        <p>19:00</p>
-                    </div>
+                <><div className="sessions" >
+                    {daysArray.map((daysArray, index) =>
+                        <><><h1>{daysArray.weekday} - {daysArray.date}</h1><div className="times">
+                            {daysArray.showtimes.map(showtimes =>
+                                <Link to={`assento/${showtimes.id}`} >
+                                    <p>{showtimes.name}</p>
+                                </Link>
+                            )}
+                        </div></><div className="padding"></div></>
+
+                    )}
                 </div>
-                <div className="padding"></div>
-                <div className="sessions">
-                    <h1>Sexta-feira - 24/06/2021</h1>
-                    <div className="times">
-                        <p>15:00</p>
-                        <p>19:00</p>
-                        <p>19:00</p>
-                    </div>
-                </div>
+                    <div className="padding"></div>
+                </>
+
             </div>
         </>
     )

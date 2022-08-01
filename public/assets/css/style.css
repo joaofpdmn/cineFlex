@@ -64,6 +64,13 @@
         row-gap: 5px;
     }
 
+    .movie-scroll div{
+        columns: 2;
+        orphans: 2;
+        overflow-x: hidden;
+        padding-left: 20px;
+    }
+
     .movie-scroll img {
         width: 129px;
         height: 193px;

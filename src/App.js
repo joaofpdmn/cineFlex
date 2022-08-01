@@ -14,8 +14,8 @@ export default function App() {
         <Header />
             <Routes>
                 <Route path="/" element={<StartScreen />} />
-                <Route path="/sessoes" element={<SessionScreen />} />
-                <Route path="/assento" element={<SeatScreen />} />
+                <Route path="/sessoes/:id" element={<SessionScreen />} />
+                <Route path="/assento/:id" element={<SeatScreen />} />
                 <Route path="/sucesso" element={<SucessScreen />} />
             </Routes>
         <Footer />
