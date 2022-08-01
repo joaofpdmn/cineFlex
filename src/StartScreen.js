@@ -13,7 +13,6 @@ export default function StartScreen() {
             setMovies(response.data);
         });
     }, []);
-    console.log(movies);
 
     
     return (

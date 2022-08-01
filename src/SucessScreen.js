@@ -4,7 +4,6 @@ import {useLocation, useNavigate} from 'react-router-dom';
 export default function SucessScreen() {
     const { state } = useLocation();
     const { final } = state;
-    console.log(final);
     const navigate = useNavigate();
 
     return (
@@ -25,6 +24,6 @@ export default function SucessScreen() {
                 <p>{final.name}</p>
                 <p>CPF: {final.cpf}</p>
             </div>
-        </div><div className="button">Voltar pra Home</div><div className="padding"></div></>
+        </div><div className="button" onClick={() => navigate('/')} >Voltar pra Home</div><div className="padding"></div></>
     )
 }

@@ -23,14 +23,12 @@ export default function SeatScreen() {
         const seatRequisition = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${params.id}/seats`);
         seatRequisition.then(response => {
             setSeats(response.data);
-            console.log(response.data);
         })
-    }, []);
+    }, [] );
     if (seats.length === 0) {
-        return <img src="" />
+        return <img src="" alt="none"/>
     }
     const seatsArray = [...seats.seats];
-    console.log(seats);
 
     const final = {
         ids: [...bookedArray],
@@ -41,7 +39,6 @@ export default function SeatScreen() {
         weekDay: seats.day.weekday,
         date: seats.day.date,
     };
-    console.log(final);
 
     function finalRender(final) {
         const bookRequisition = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many", final);

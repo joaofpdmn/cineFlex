@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
-export default function RenderBall({ seatsArray, booked, setBooked, bookedArray, setBookedArray, index }) {
+export default function RenderBall({ seatsArray, setBooked, bookedArray, setBookedArray, index }) {
     const [clicked, setClicked] = useState(false);
     const [color, setColor] = useState('');
     let seatBall;
